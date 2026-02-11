@@ -31,7 +31,7 @@
             position: relative;
         }
 
-        /* EFEK PARTIKEL / NOISE BACKGROUND (Biar kesannya dalam & mistis) */
+        /* EFEK PARTIKEL / NOISE BACKGROUND */
         body::before {
             content: "";
             position: fixed;
@@ -44,7 +44,7 @@
             opacity: 0.4;
         }
 
-        /* LAYAR PEMBUKA (SPLASH SCREEN) - Gaya Hipnotis */
+        /* LAYAR PEMBUKA (SPLASH SCREEN) */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -68,7 +68,7 @@
         #splash-screen h1 {
             font-family: 'Cinzel', serif;
             font-size: 2.8rem;
-            color: #f1c40f; /* Emas */
+            color: #f1c40f;
             margin-bottom: 10px;
             text-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
         }
@@ -101,12 +101,12 @@
             transform: scale(1.05);
         }
 
-        /* AUDIO - DIHILANGKAN LOGO NYA */
+        /* AUDIO - HIDDEN */
         audio {
             display: none;
         }
 
-        /* HEADER - IMAGE HERO */
+        /* HEADER */
         header {
             position: relative;
             height: 450px;
@@ -154,12 +154,12 @@
             display: inline-block;
         }
 
-        /* CONTENT CONTAINER */
+        /* CONTENT */
         .content {
             padding: 40px 20px;
         }
 
-        /* QUOTE BESAR (Filosofis) */
+        /* QUOTE BESAR */
         .quote-section {
             margin-bottom: 60px;
         }
@@ -178,7 +178,7 @@
             font-style: italic;
         }
 
-        /* LAYANAN - Grid Minimalis */
+        /* LAYANAN - Grid 2 Kolom (8 Item) */
         .services-title {
             font-family: 'Cinzel', serif;
             color: #f1c40f;
@@ -205,6 +205,7 @@
         .service-card:hover {
             border-color: #f1c40f;
             background: rgba(241, 196, 15, 0.05);
+            transform: translateY(-5px);
         }
 
         .service-icon {
@@ -261,7 +262,7 @@
             display: block;
         }
 
-        /* CTA / FOOTER */
+        /* CTA */
         .cta-section {
             background-color: #111;
             padding: 40px 20px;
@@ -302,7 +303,7 @@
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- SPLASH SCREEN HIPNOTIS -->
+    <!-- SPLASH SCREEN -->
     <div id="splash-screen">
         <h1>KAKA STUDIO</h1>
         <p>"Ketika kata tak lagi mampu berbicara, biarkan seni yang menjadi suaramu."</p>
@@ -320,7 +321,7 @@
     <!-- CONTENT -->
     <div class="content">
 
-        <!-- QUOTE FILOSOFIS -->
+        <!-- QUOTE -->
         <section class="quote-section">
             <div class="big-quote">
                 "Hidup bukan tentang menunggu badai berlalu, tapi tentang bagaimana kita menarikan irama di tengah hujan."
@@ -330,39 +331,58 @@
             </p>
         </section>
 
-        <!-- LAYANAN -->
+        <!-- LAYANAN (SUDAH LENGKAP 8 ITEM) -->
         <div class="services-title">LAYANAN JIWA</div>
         <div class="service-grid">
+            
             <div class="service-card">
                 <span class="service-icon">🎹</span>
                 <span class="service-name">Rental Musik</span>
                 <span class="service-desc">Sentuh nadanya, goreskan perasaanmu.</span>
             </div>
+
+            <div class="service-card">
+                <span class="service-icon">🎮</span>
+                <span class="service-name">Rental Game</span>
+                <span class="service-desc">Taklukkan dunia maya, lupakan sejenak kenyataan.</span>
+            </div>
+
             <div class="service-card">
                 <span class="service-icon">🎙️</span>
-                <span class="service-name">Membuat Lagu</span>
+                <span class="service-name">Rekaman Lagu</span>
                 <span class="service-desc">Abadikan detik yang tak akan terulang.</span>
             </div>
+
             <div class="service-card">
                 <span class="service-icon">🎬</span>
-                <span class="service-name">Membuat Video</span>
+                <span class="service-name">Video Medsos</span>
                 <span class="service-desc">Visualisasi mimpi yang nyata.</span>
             </div>
-            <div class="service-card">
-                <span class="service-icon">☕</span>
-                <span class="service-name">Cafe & Bar</span>
-                <span class="service-desc">Tempat di mana setiap tegukan adalah dialog.</span>
-            </div>
+
             <div class="service-card">
                 <span class="service-icon">🎤</span>
                 <span class="service-name">Room Karaoke</span>
                 <span class="service-desc">Teriakkan hasrat, bebaskan beban pikiran.</span>
             </div>
+
+            <div class="service-card">
+                <span class="service-icon">☕</span>
+                <span class="service-name">Cafe & Bar</span>
+                <span class="service-desc">Tempat di mana setiap tegukan adalah dialog.</span>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">📽️</span>
+                <span class="service-name">Mini Bioskop</span>
+                <span class="service-desc">Layar kecil yang membawa mimpi besar.</span>
+            </div>
+
             <div class="service-card">
                 <span class="service-icon">🎭</span>
                 <span class="service-name">Acara Hiburan</span>
                 <span class="service-desc">Wujudkan pesta yang tak terlupakan.</span>
             </div>
+
         </div>
 
         <!-- GALLERY -->
@@ -391,13 +411,13 @@
             </div>
         </section>
 
-        <!-- CTA HIPNOTIS -->
+        <!-- CTA -->
         <section class="cta-section">
             <p class="cta-text">
-                Jangan biarkan idemu tertidur dalam keheningan.<br>
+                Jangan biarkan Mimpimu tertidur dalam keheningan.<br>
                 <strong>Wujudkan sekarang.</strong>
             </p>
-            <a href="https://wa.me/6289655606009" class="btn-wa" target="_blank">HUBUNGI KAMI</a>
+            <a href="https://wa.me/6289655606009" class="btn-wa" target="_blank">HUBUNGI KAKA</a>
         </section>
 
         <div class="footer-copy">
