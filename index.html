@@ -3,106 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KAKA STUDIO - Multimedia Entertainment</title>
+    <title>KAKA STUDIO - Hypnotic Experience</title>
     
-    <!-- Font Keren & Elegan -->
+    <!-- FONT MISTIS & HYPNOTIS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* RESET & BASE - Tema Gelap Elegan */
+        /* BASE & VARIABLE */
+        :root {
+            --gold: #D4AF37; /* Emas klasik */
+            --light-gold: #F4E4BC;
+            --bg-black: #000000;
+            --text-white: #F5F5F5;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Lato', sans-serif;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--bg-black);
+            color: var(--text-white);
             text-align: center;
             overflow-x: hidden;
             width: 100%;
-            max-width: 480px; /* Ukuran HP */
+            max-width: 480px;
             margin: 0 auto;
-            position: relative;
         }
 
         /* AUDIO HIDDEN */
-        audio {
-            display: none;
-        }
+        audio { display: none; }
 
-        /* SPLASH SCREEN - Pintu Masuk */
+        /* ========== SPLASH SCREEN (PINTU HYPNOSIS) ========== */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #1a1a1a, #000000);
+            background-color: #000;
             z-index: 9999;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 30px;
-            transition: transform 1.2s cubic-bezier(0.86, 0, 0.07, 1);
+            transition: opacity 1.5s ease, visibility 1.5s ease;
         }
 
-        #splash-screen.hide {
-            transform: translateY(-100%);
+        /* EFEK CAHAYA BERPUTAR (HYPNOTIC RING) */
+        .hypno-ring {
+            width: 250px;
+            height: 250px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            position: absolute;
+            animation: spin 10s linear infinite;
+        }
+        
+        .hypno-ring::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
         }
 
-        #splash-screen h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            color: #f1c40f;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .splash-content {
+            z-index: 10;
+            padding: 20px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .splash-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 3.5rem;
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
             margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
+            /* Efek Bernapas */
+            animation: breathe 4s ease-in-out infinite;
         }
 
-        #splash-screen p {
+        .splash-text {
             font-size: 1rem;
-            color: #aaa;
-            margin-bottom: 40px;
+            color: #888;
+            margin-bottom: 50px;
             font-style: italic;
+            letter-spacing: 1px;
             line-height: 1.6;
         }
 
         .btn-enter {
             background: transparent;
-            border: 1px solid #f1c40f;
-            color: #f1c40f;
-            padding: 15px 40px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 18px 50px;
             font-size: 0.9rem;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.4s ease;
-            font-family: 'Cinzel', serif;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-enter:hover {
-            background: #f1c40f;
+            background: var(--gold);
             color: #000;
-            box-shadow: 0 0 25px rgba(241, 196, 15, 0.5);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
         }
 
-        /* HEADER - Hero Image */
+        /* ========== HEADER (VISUAL FOCUS) ========== */
         header {
             position: relative;
-            height: 420px;
+            height: 450px;
             background-image: url('foto1.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
-            padding-bottom: 40px;
+            /* Efek Dramatis */
+            box-shadow: inset 0 0 100px #000;
         }
 
         header::after {
@@ -112,110 +148,107 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), #0a0a0a);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), #000000);
         }
 
         .hero-text {
             position: relative;
             z-index: 2;
-            padding: 20px;
         }
 
         .hero-text h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            color: #fff;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 3.5rem;
             line-height: 1;
-            margin-bottom: 10px;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--gold); /* Efek Outline */
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            margin-bottom: 15px;
+            animation: breathe 5s ease-in-out infinite;
         }
 
         .hero-text .sub {
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            color: #f1c40f;
-            text-transform: uppercase;
-            border-top: 1px solid #f1c40f;
-            border-bottom: 1px solid #f1c40f;
-            padding: 8px 0;
-            display: inline-block;
-        }
-
-        /* CONTENT */
-        .content {
-            padding: 40px 20px;
-        }
-
-        /* QUOTE UTAMA */
-        .quote-section {
-            margin-bottom: 50px;
-        }
-
-        .big-quote {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
             color: #fff;
-            line-height: 1.5;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        /* ========== KONTEN UTAMA ========== */
+        .content {
+            padding: 50px 20px;
+            background: #000;
+        }
+
+        .section-title {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* QUOTE SECTION */
+        .quote-box {
+            margin-bottom: 60px;
+            padding: 20px;
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+        }
+
+        .quote-big {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.6rem;
+            line-height: 1.4;
+            color: #fff;
             margin-bottom: 15px;
         }
 
-        .small-quote {
-            font-size: 0.85rem;
+        .quote-small {
+            font-size: 0.9rem;
             color: #666;
             font-style: italic;
         }
 
-        /* LAYANAN */
-        .services-title {
-            font-family: 'Cinzel', serif;
-            color: #f1c40f;
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-        }
-
+        /* LAYANAN GRID */
         .service-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 15px;
             margin-bottom: 60px;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid #222;
-            padding: 20px 10px;
-            border-radius: 4px;
-            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid #1a1a1a;
+            padding: 25px 10px;
+            transition: all 0.4s ease;
+            position: relative;
         }
 
         .service-card:hover {
-            border-color: #f1c40f;
-            background: rgba(241, 196, 15, 0.05);
-            transform: translateY(-3px);
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-5px);
         }
 
-        .service-icon {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            display: block;
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
-        .service-name {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 8px;
+        .service-card:hover::before {
+            opacity: 1;
         }
 
-        .service-desc {
-            font-size: 0.7rem;
-            color: #777;
-            line-height: 1.4;
-        }
+        .service-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .service-name { font-size: 0.9rem; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: block; }
+        .service-desc { font-size: 0.7rem; color: #555; line-height: 1.4; font-style: italic; }
 
         /* GALLERY */
         .gallery-grid {
@@ -224,62 +257,61 @@
             gap: 5px;
             margin-bottom: 60px;
         }
-
         .gallery-grid img {
             width: 100%;
-            height: 190px;
+            height: 200px;
             object-fit: cover;
-            filter: grayscale(20%);
-            transition: filter 0.3s;
+            filter: grayscale(80%) contrast(120%); /* Efek Sinematik */
+            transition: filter 0.4s;
         }
-        
         .gallery-grid img:hover {
-            filter: grayscale(0%);
+            filter: grayscale(0%) contrast(100%);
         }
 
         /* VIDEO */
         .video-box {
-            margin-bottom: 15px;
-            border: 1px solid #333;
-            position: relative;
-        }
-        
-        .video-box video {
-            width: 100%;
-            display: block;
-        }
-
-        /* CTA */
-        .cta-section {
-            background-color: #111;
-            padding: 40px 20px;
-            border-top: 1px solid #222;
-        }
-
-        .cta-text {
-            font-size: 1rem;
-            color: #fff;
             margin-bottom: 20px;
-            line-height: 1.6;
+            border: 1px solid #222;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
         }
+        video { width: 100%; display: block; }
 
+        /* CTA (AJAKAN HYPNOTIS) */
+        .cta-section {
+            padding: 60px 20px;
+            background: radial-gradient(circle at center, #1a1a1a, #000);
+        }
+        .cta-text { font-size: 1rem; color: #ccc; margin-bottom: 30px; line-height: 1.6; }
+        
         .btn-wa {
-            background-color: #f1c40f;
-            color: #000;
-            padding: 15px 30px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 18px 40px;
             font-weight: 700;
             text-decoration: none;
             display: inline-block;
-            border-radius: 2px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 30px rgba(241, 196, 15, 0.2);
+            letter-spacing: 2px;
+            transition: all 0.4s;
+            font-family: 'Cinzel Decorative', cursive;
         }
 
-        .footer-copy {
-            margin-top: 40px;
-            font-size: 0.7rem;
-            color: #333;
+        .btn-wa:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* ANIMASI BREATHING (KENAPA NAFAS) */
+        @keyframes breathe {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
     </style>
@@ -291,11 +323,17 @@
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- SPLASH SCREEN -->
+    <!-- SPLASH SCREEN HYPNOTIS -->
     <div id="splash-screen">
-        <h1>KAKA STUDIO</h1>
-        <p>"Banyak orang sibuk mencari hiburan, namun sedikit yang menemukan makna."</p>
-        <button class="btn-enter" onclick="openGate()">BUKA PINTU HATI</button>
+        <div class="hypno-ring"></div> <!-- Cincin Berputar -->
+        <div class="splash-content">
+            <div class="splash-title">KAKA</div>
+            <div class="splash-title" style="font-size: 2.5rem;">STUDIO</div>
+            <p class="splash-text">
+                "Banyak orang sibuk mencari hiburan,<br>namun sedikit yang menemukan makna."
+            </p>
+            <button class="btn-enter" onclick="openGate()">MASUKI DUNIA BARU</button>
+        </div>
     </div>
 
     <!-- HEADER -->
@@ -306,21 +344,20 @@
         </div>
     </header>
 
-    <!-- CONTENT -->
     <div class="content">
 
         <!-- QUOTE UTAMA -->
-        <section class="quote-section">
-            <div class="big-quote">
+        <section class="quote-box">
+            <div class="quote-big">
                 "Hidup ini cuma sekali. Jangan cuma jadi penonton, jadilah pemain utama di hidupmu sendiri."
             </div>
-            <p class="small-quote">
+            <p class="quote-small">
                 Tempat di mana setiap detik berharga untuk dirayakan.
             </p>
         </section>
 
-        <!-- LAYANAN (LENGKAP 10 ITEM) -->
-        <div class="services-title">LAYANAN KAMI</div>
+        <!-- LAYANAN -->
+        <div class="section-title">Layanan Jiwa</div>
         <div class="service-grid">
             
             <div class="service-card">
@@ -331,31 +368,31 @@
 
             <div class="service-card">
                 <span class="service-icon">🎮</span>
-                <span class="service-name">Rental Game</span>
+                <span class="service-name">Rental Game Ps/Warnet</span>
                 <span class="service-desc">Hiburan terbaik adalah ketika kamu bisa melupakan masalah sejenak.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">🎓</span>
-                <span class="service-name">Kursus Musik</span>
+                <span class="service-name">Kursus Musik Dll</span>
                 <span class="service-desc">Bakat itu potensi, tapi latihan adalah harga matang yang harus dibayar.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">🎙️</span>
-                <span class="service-name">Rekaman Lagu</span>
+                <span class="service-name">Rekaman&Buat Lagu Sendiri</span>
                 <span class="service-desc">Suara yang tak terekam, seolah tak pernah terjadi. Abadikan sekarang.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">🎬</span>
-                <span class="service-name">Video Clip & Medsos</span>
+                <span class="service-name">Video Clip Medsos</span>
                 <span class="service-desc">Dunia perlu melihat apa yang kamu lihat. Tunjukkan karyamu.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">🎤</span>
-                <span class="service-name">Room Karaoke</span>
+                <span class="service-name">Room Karaoke Live</span>
                 <span class="service-desc">Kadang kita butuh teriakan, bukan kata-kata, untuk meluapkan isi hati.</span>
             </div>
 
@@ -373,7 +410,7 @@
 
             <div class="service-card">
                 <span class="service-icon">🎭</span>
-                <span class="service-name">Acara Music Hajatan/Kawinan</span>
+                <span class="service-name">Acara Music</span>
                 <span class="service-desc">Momen bahagia hanya terjadi sekali, tapi kenangannya bisa selamanya.</span>
             </div>
 
@@ -387,18 +424,18 @@
 
         <!-- GALLERY -->
         <section>
-            <div class="services-title">GALERI KAKA</div>
+            <div class="section-title">Galeri Kaka</div>
             <div class="gallery-grid">
-                <img src="foto2.jpg" alt="Gallery 1">
-                <img src="foto3.jpg" alt="Gallery 2">
-                <img src="foto4.jpg" alt="Gallery 3">
-                <img src="foto1.jpg" alt="Gallery 4">
+                <img src="foto2.jpg" alt="Galeri 1">
+                <img src="foto3.jpg" alt="Galeri 2">
+                <img src="foto4.jpg" alt="Galeri 3">
+                <img src="foto1.jpg" alt="Galeri 4">
             </div>
         </section>
 
         <!-- VIDEO -->
         <section>
-            <div class="services-title">CATATAN GERAK</div>
+            <div class="section-title">Catatan Waktu</div>
             <div class="video-box">
                 <video controls playsinline muted>
                     <source src="video1.mp4" type="video/mp4">
@@ -420,10 +457,6 @@
             <a href="https://wa.me/6289655606009" class="btn-wa" target="_blank">HUBUNGI KAKA</a>
         </section>
 
-        <div class="footer-copy">
-            &copy; 2024 KAKA STUDIO. All Rights Reserved.
-        </div>
-
     </div>
 
     <script>
@@ -435,12 +468,8 @@
 
             // Hilangkan splash screen
             var splash = document.getElementById("splash-screen");
-            splash.classList.add('hide');
-            
-            // Hapus elemen dari DOM setelah animasi
-            setTimeout(() => {
-                splash.style.display = 'none';
-            }, 1200);
+            splash.style.opacity = '0';
+            splash.style.visibility = 'hidden';
         }
     </script>
 </body>
