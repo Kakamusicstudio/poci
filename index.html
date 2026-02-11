@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KAKA STUDIO - Dompet & Jiwa</title>
+    <title>KAKA STUDIO - Multimedia Entertainment</title>
     
-    <!-- Font Keren -->
+    <!-- Font Keren & Elegan -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* RESET & BASE - Tema Gelap Misterius */
+        /* RESET & BASE - Tema Gelap Elegan */
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +21,7 @@
 
         body {
             font-family: 'Lato', sans-serif;
-            background-color: #050505;
+            background-color: #0a0a0a;
             color: #e0e0e0;
             text-align: center;
             overflow-x: hidden;
@@ -31,20 +31,12 @@
             position: relative;
         }
 
-        /* EFEK PARTIKEL / NOISE BACKGROUND */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            z-index: -1;
-            opacity: 0.4;
+        /* AUDIO HIDDEN */
+        audio {
+            display: none;
         }
 
-        /* LAYAR PEMBUKA (SPLASH SCREEN) */
+        /* SPLASH SCREEN - Pintu Masuk */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -57,8 +49,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1);
+            padding: 30px;
+            transition: transform 1.2s cubic-bezier(0.86, 0, 0.07, 1);
         }
 
         #splash-screen.hide {
@@ -67,26 +59,26 @@
 
         #splash-screen h1 {
             font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: #f1c40f;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             text-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
         }
 
         #splash-screen p {
-            font-size: 0.95rem;
-            color: #888;
+            font-size: 1rem;
+            color: #aaa;
             margin-bottom: 40px;
             font-style: italic;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .btn-enter {
             background: transparent;
             border: 1px solid #f1c40f;
             color: #f1c40f;
-            padding: 15px 50px;
-            font-size: 1rem;
+            padding: 15px 40px;
+            font-size: 0.9rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             cursor: pointer;
@@ -97,25 +89,20 @@
         .btn-enter:hover {
             background: #f1c40f;
             color: #000;
-            box-shadow: 0 0 30px rgba(241, 196, 15, 0.6);
-            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(241, 196, 15, 0.5);
         }
 
-        /* AUDIO - HIDDEN */
-        audio {
-            display: none;
-        }
-
-        /* HEADER */
+        /* HEADER - Hero Image */
         header {
             position: relative;
-            height: 450px;
+            height: 420px;
             background-image: url('foto1.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
+            padding-bottom: 40px;
         }
 
         header::after {
@@ -125,7 +112,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #050505);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), #0a0a0a);
         }
 
         .hero-text {
@@ -140,17 +127,17 @@
             color: #fff;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
             line-height: 1;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .hero-text .sub {
-            font-size: 1rem;
+            font-size: 0.9rem;
             letter-spacing: 4px;
             color: #f1c40f;
             text-transform: uppercase;
             border-top: 1px solid #f1c40f;
             border-bottom: 1px solid #f1c40f;
-            padding: 10px 0;
+            padding: 8px 0;
             display: inline-block;
         }
 
@@ -159,30 +146,30 @@
             padding: 40px 20px;
         }
 
-        /* QUOTE BESAR */
+        /* QUOTE UTAMA */
         .quote-section {
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .big-quote {
             font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: #fff;
-            line-height: 1.4;
+            line-height: 1.5;
             margin-bottom: 15px;
         }
 
         .small-quote {
-            font-size: 0.9rem;
-            color: #777;
+            font-size: 0.85rem;
+            color: #666;
             font-style: italic;
         }
 
-        /* LAYANAN - Grid 2 Kolom (8 Item) */
+        /* LAYANAN */
         .services-title {
             font-family: 'Cinzel', serif;
             color: #f1c40f;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 30px;
             letter-spacing: 2px;
         }
@@ -190,14 +177,14 @@
         .service-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 60px;
         }
 
         .service-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid #222;
-            padding: 25px 10px;
+            padding: 20px 10px;
             border-radius: 4px;
             transition: all 0.3s;
         }
@@ -205,28 +192,28 @@
         .service-card:hover {
             border-color: #f1c40f;
             background: rgba(241, 196, 15, 0.05);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .service-icon {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 10px;
             display: block;
         }
 
         .service-name {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 1px;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .service-desc {
-            font-size: 0.75rem;
-            color: #666;
+            font-size: 0.7rem;
+            color: #777;
             line-height: 1.4;
         }
 
@@ -240,9 +227,9 @@
 
         .gallery-grid img {
             width: 100%;
-            height: 200px;
+            height: 190px;
             object-fit: cover;
-            filter: grayscale(30%);
+            filter: grayscale(20%);
             transition: filter 0.3s;
         }
         
@@ -252,7 +239,7 @@
 
         /* VIDEO */
         .video-box {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 1px solid #333;
             position: relative;
         }
@@ -270,9 +257,10 @@
         }
 
         .cta-text {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #fff;
             margin-bottom: 20px;
+            line-height: 1.6;
         }
 
         .btn-wa {
@@ -291,7 +279,7 @@
         .footer-copy {
             margin-top: 40px;
             font-size: 0.7rem;
-            color: #444;
+            color: #333;
         }
 
     </style>
@@ -306,8 +294,8 @@
     <!-- SPLASH SCREEN -->
     <div id="splash-screen">
         <h1>KAKA STUDIO</h1>
-        <p>"Ketika kata tak lagi mampu berbicara, biarkan seni yang menjadi suaramu."</p>
-        <button class="btn-enter" onclick="openGate()">MASUKI DUNIA BARU</button>
+        <p>"Banyak orang sibuk mencari hiburan, namun sedikit yang menemukan makna."</p>
+        <button class="btn-enter" onclick="openGate()">BUKA PINTU HATI</button>
     </div>
 
     <!-- HEADER -->
@@ -321,84 +309,96 @@
     <!-- CONTENT -->
     <div class="content">
 
-        <!-- QUOTE -->
+        <!-- QUOTE UTAMA -->
         <section class="quote-section">
             <div class="big-quote">
-                "Hidup bukan tentang menunggu badai berlalu, tapi tentang bagaimana kita menarikan irama di tengah hujan."
+                "Hidup ini cuma sekali. Jangan cuma jadi penonton, jadilah pemain utama di hidupmu sendiri."
             </div>
             <p class="small-quote">
-                Kami tidak hanya menjual jasa. Kami menawarkan transformasi.
+                Tempat di mana setiap detik berharga untuk dirayakan.
             </p>
         </section>
 
-        <!-- LAYANAN (SUDAH LENGKAP 8 ITEM) -->
-        <div class="services-title">LAYANAN JIWA</div>
+        <!-- LAYANAN (LENGKAP 10 ITEM) -->
+        <div class="services-title">LAYANAN KAMI</div>
         <div class="service-grid">
             
             <div class="service-card">
                 <span class="service-icon">🎹</span>
                 <span class="service-name">Rental Musik</span>
-                <span class="service-desc">Sentuh nadanya, goreskan perasaanmu.</span>
+                <span class="service-desc">Melodi adalah bahasa yang bisa dimengerti tanpa kata.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">🎮</span>
                 <span class="service-name">Rental Game</span>
-                <span class="service-desc">Taklukkan dunia maya, lupakan sejenak kenyataan.</span>
+                <span class="service-desc">Hiburan terbaik adalah ketika kamu bisa melupakan masalah sejenak.</span>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">🎓</span>
+                <span class="service-name">Kursus Musik</span>
+                <span class="service-desc">Bakat itu potensi, tapi latihan adalah harga matang yang harus dibayar.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">🎙️</span>
                 <span class="service-name">Rekaman Lagu</span>
-                <span class="service-desc">Abadikan detik yang tak akan terulang.</span>
+                <span class="service-desc">Suara yang tak terekam, seolah tak pernah terjadi. Abadikan sekarang.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">🎬</span>
                 <span class="service-name">Video Medsos</span>
-                <span class="service-desc">Visualisasi mimpi yang nyata.</span>
+                <span class="service-desc">Dunia perlu melihat apa yang kamu lihat. Tunjukkan karyamu.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">🎤</span>
                 <span class="service-name">Room Karaoke</span>
-                <span class="service-desc">Teriakkan hasrat, bebaskan beban pikiran.</span>
+                <span class="service-desc">Kadang kita butuh teriakan, bukan kata-kata, untuk meluapkan isi hati.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">☕</span>
                 <span class="service-name">Cafe & Bar</span>
-                <span class="service-desc">Tempat di mana setiap tegukan adalah dialog.</span>
+                <span class="service-desc">Tempat di mana secangkir kopi bisa menjadi obat bagi penat.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">📽️</span>
                 <span class="service-name">Mini Bioskop</span>
-                <span class="service-desc">Layar kecil yang membawa mimpi besar.</span>
+                <span class="service-desc">Nikmati cerita orang lain untuk mendapatkan perspektif hidup baru.</span>
             </div>
 
             <div class="service-card">
                 <span class="service-icon">🎭</span>
                 <span class="service-name">Acara Hiburan</span>
-                <span class="service-desc">Wujudkan pesta yang tak terlupakan.</span>
+                <span class="service-desc">Momen bahagia hanya terjadi sekali, tapi kenangannya bisa selamanya.</span>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">👥</span>
+                <span class="service-name">Ruang Komunitas</span>
+                <span class="service-desc">Berkumpul bukan sekadar bertemu, tapi menyatukan hati dan pikiran.</span>
             </div>
 
         </div>
 
         <!-- GALLERY -->
         <section>
-            <div class="services-title">MEMORI KAMI</div>
+            <div class="services-title">GALERI KAKA</div>
             <div class="gallery-grid">
-                <img src="foto2.jpg" alt="Momen 1">
-                <img src="foto3.jpg" alt="Momen 2">
-                <img src="foto4.jpg" alt="Momen 3">
-                <img src="foto1.jpg" alt="Momen 4">
+                <img src="foto2.jpg" alt="Gallery 1">
+                <img src="foto3.jpg" alt="Gallery 2">
+                <img src="foto4.jpg" alt="Gallery 3">
+                <img src="foto1.jpg" alt="Gallery 4">
             </div>
         </section>
 
         <!-- VIDEO -->
         <section>
-            <div class="services-title">CATATAN WAKTU</div>
+            <div class="services-title">CATATAN GERAK</div>
             <div class="video-box">
                 <video controls playsinline muted>
                     <source src="video1.mp4" type="video/mp4">
@@ -414,14 +414,14 @@
         <!-- CTA -->
         <section class="cta-section">
             <p class="cta-text">
-                Jangan biarkan Mimpimu tertidur dalam keheningan.<br>
-                <strong>Wujudkan sekarang.</strong>
+                Jangan biarkan <strong>ide-mu</strong> tertidur dalam keheningan.<br>
+                Wujudkan sekarang.
             </p>
             <a href="https://wa.me/6289655606009" class="btn-wa" target="_blank">HUBUNGI KAKA</a>
         </section>
 
         <div class="footer-copy">
-            &copy; 2024 KAKA STUDIO. Creating Memories That Last Forever.
+            &copy; 2024 KAKA STUDIO. All Rights Reserved.
         </div>
 
     </div>
@@ -430,7 +430,7 @@
         function openGate() {
             // Mainkan musik
             var audio = document.getElementById("bgMusic");
-            audio.volume = 0.5; // Set volume 50%
+            audio.volume = 0.6;
             audio.play();
 
             // Hilangkan splash screen
@@ -440,7 +440,7 @@
             // Hapus elemen dari DOM setelah animasi
             setTimeout(() => {
                 splash.style.display = 'none';
-            }, 1000);
+            }, 1200);
         }
     </script>
 </body>
