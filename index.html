@@ -5,25 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>KAKA STUDIO - Hypnotic Experience</title>
     
-    <!-- FONT MISTIS & HYPNOTIS -->
+    <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* BASE & VARIABLE */
+        /* VARIABLE */
         :root {
-            --gold: #D4AF37; /* Emas klasik */
-            --light-gold: #F4E4BC;
+            --gold: #D4AF37;
             --bg-black: #000000;
             --text-white: #F5F5F5;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Raleway', sans-serif;
@@ -36,29 +31,24 @@
             margin: 0 auto;
         }
 
-        /* AUDIO HIDDEN */
         audio { display: none; }
 
-        /* ========== SPLASH SCREEN (PINTU HYPNOSIS) ========== */
+        /* SPLASH SCREEN */
         #splash-screen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-color: #000;
             z-index: 9999;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 1.5s ease, visibility 1.5s ease;
+            /* Penting: transition halus */
+            transition: opacity 1s ease;
         }
 
-        /* EFEK CAHAYA BERPUTAR (HYPNOTIC RING) */
         .hypno-ring {
-            width: 250px;
-            height: 250px;
+            width: 250px; height: 250px;
             border: 2px solid rgba(212, 175, 55, 0.2);
             border-radius: 50%;
             position: absolute;
@@ -66,8 +56,7 @@
         }
         
         .hypno-ring::before {
-            content: '';
-            position: absolute;
+            content: ''; position: absolute;
             top: -2px; left: -2px; right: -2px; bottom: -2px;
             border: 2px solid var(--gold);
             border-radius: 50%;
@@ -75,16 +64,9 @@
             border-bottom-color: transparent;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .splash-content {
-            z-index: 10;
-            padding: 20px;
-            animation: fadeInUp 1.5s ease;
-        }
+        .splash-content { z-index: 10; padding: 20px; }
 
         .splash-title {
             font-family: 'Cinzel Decorative', cursive;
@@ -92,251 +74,156 @@
             color: var(--gold);
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
             margin-bottom: 20px;
-            /* Efek Bernapas */
             animation: breathe 4s ease-in-out infinite;
         }
 
         .splash-text {
-            font-size: 1rem;
-            color: #888;
+            font-size: 1rem; color: #888;
             margin-bottom: 50px;
             font-style: italic;
             letter-spacing: 1px;
-            line-height: 1.6;
         }
 
         .btn-enter {
             background: transparent;
             border: 1px solid var(--gold);
             color: var(--gold);
-            padding: 18px 50px;
+            padding: 15px 40px;
             font-size: 0.9rem;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             font-family: 'Raleway', sans-serif;
             font-weight: 600;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-enter:hover {
             background: var(--gold);
             color: #000;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
         }
 
-        /* ========== HEADER (VISUAL FOCUS) ========== */
+        /* HEADER */
         header {
             position: relative;
-            height: 450px;
-            background-image: url('foto1.jpg');
+            height: 400px;
+            /* GANTI URL INI DENGAN FOTO ANDA (foto1.jpg) */
+            background-image: url('https://picsum.photos/seed/headerkaka/600/800');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* Efek Dramatis */
             box-shadow: inset 0 0 100px #000;
         }
 
         header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7), #000000);
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), #000000);
         }
 
-        .hero-text {
-            position: relative;
-            z-index: 2;
-        }
-
+        .hero-text { position: relative; z-index: 2; }
         .hero-text h1 {
             font-family: 'Cinzel Decorative', cursive;
-            font-size: 3.5rem;
-            line-height: 1;
+            font-size: 3rem;
             color: transparent;
-            -webkit-text-stroke: 1px var(--gold); /* Efek Outline */
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-            margin-bottom: 15px;
-            animation: breathe 5s ease-in-out infinite;
+            -webkit-text-stroke: 1px var(--gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            margin-bottom: 10px;
         }
-
         .hero-text .sub {
-            font-size: 0.8rem;
-            letter-spacing: 6px;
-            color: #fff;
-            text-transform: uppercase;
-            opacity: 0.8;
+            font-size: 0.7rem; letter-spacing: 5px; color: #fff; text-transform: uppercase;
         }
 
-        /* ========== KONTEN UTAMA ========== */
-        .content {
-            padding: 50px 20px;
-            background: #000;
-        }
+        /* CONTENT */
+        .content { padding: 40px 20px; background: #000; }
 
         .section-title {
             font-family: 'Cinzel Decorative', cursive;
             color: var(--gold);
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
         }
 
-        /* QUOTE SECTION */
-        .quote-box {
-            margin-bottom: 60px;
-            padding: 20px;
-            border-left: 1px solid #333;
-            border-right: 1px solid #333;
-        }
-
-        .quote-big {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: 1.6rem;
-            line-height: 1.4;
-            color: #fff;
-            margin-bottom: 15px;
-        }
-
-        .quote-small {
-            font-size: 0.9rem;
-            color: #666;
-            font-style: italic;
-        }
-
-        /* LAYANAN GRID */
+        /* SERVICES */
         .service-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 60px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 40px;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid #1a1a1a;
-            padding: 25px 10px;
-            transition: all 0.4s ease;
-            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #222;
+            padding: 20px 5px;
+            transition: 0.3s;
         }
-
-        .service-card:hover {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.05);
-            transform: translateY(-5px);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
-        .service-name { font-size: 0.9rem; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: block; }
-        .service-desc { font-size: 0.7rem; color: #555; line-height: 1.4; font-style: italic; }
+        .service-card:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.05); }
+        
+        .service-icon { font-size: 1.8rem; margin-bottom: 5px; display: block; }
+        .service-name { font-size: 0.8rem; font-weight: 600; color: #fff; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .service-desc { font-size: 0.65rem; color: #666; line-height: 1.3; font-style: italic; }
 
         /* GALLERY */
         .gallery-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
-            margin-bottom: 60px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 40px;
         }
         .gallery-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            filter: grayscale(80%) contrast(120%); /* Efek Sinematik */
-            transition: filter 0.4s;
+            width: 100%; height: 150px; object-fit: cover;
+            filter: grayscale(100%); transition: 0.3s;
         }
-        .gallery-grid img:hover {
-            filter: grayscale(0%) contrast(100%);
-        }
+        .gallery-grid img:hover { filter: grayscale(0%); }
 
-        /* VIDEO */
-        .video-box {
-            margin-bottom: 20px;
-            border: 1px solid #222;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
-        }
+        /* VIDEO & CTA */
+        .video-box { margin-bottom: 30px; border: 1px solid #333; }
         video { width: 100%; display: block; }
 
-        /* CTA (AJAKAN HYPNOTIS) */
-        .cta-section {
-            padding: 60px 20px;
-            background: radial-gradient(circle at center, #1a1a1a, #000);
-        }
-        .cta-text { font-size: 1rem; color: #ccc; margin-bottom: 30px; line-height: 1.6; }
-        
+        .cta-section { padding: 40px 20px; text-align: center; }
         .btn-wa {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            padding: 18px 40px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.4s;
-            font-family: 'Cinzel Decorative', cursive;
+            display: inline-block; background: var(--gold); color: #000;
+            padding: 15px 30px; text-decoration: none; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 1px; margin-top: 10px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
-        .btn-wa:hover {
-            background: var(--gold);
-            color: #000;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
-        }
-
-        /* ANIMASI BREATHING (KENAPA NAFAS) */
         @keyframes breathe {
             0%, 100% { opacity: 0.8; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.02); }
+            50% { opacity: 1; transform: scale(1.05); }
         }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
     </style>
 </head>
 <body>
 
     <!-- AUDIO -->
+    <!-- 
+       PENTING: 
+       Saya menggunakan link musik ONLINE agar langsung jalan untuk demo.
+       
+       JIKA INGIN PAKAI FILE ANDA SENDIRI:
+       1. Hapus baris <source src="https://cdn...">
+       2. Aktifkan baris: <source src="Kaka Studio3.MP3" type="audio/mpeg">
+       3. Pastikan file MP3 ada di folder yang sama.
+    -->
     <audio id="bgMusic" loop>
-        <source src="music.mp3" type="audio/mpeg">
+        <!-- MUSIK DEMO ONLINE (Auto Play) -->
+        <source src="Kaka Studio3.MP3" type="audio/mpeg">
+        
+        <!-- PAKAI FILE LOKAL ANDA (HAPUS TANDA <!-- DAN --> DI BAWAH INI) -->
+        <!-- <source src="Kaka Studio3.MP3" type="audio/mpeg"> -->
     </audio>
 
-    <!-- SPLASH SCREEN HYPNOTIS -->
+    <!-- SPLASH SCREEN -->
     <div id="splash-screen">
-        <div class="hypno-ring"></div> <!-- Cincin Berputar -->
+        <div class="hypno-ring"></div>
         <div class="splash-content">
             <div class="splash-title">KAKA</div>
-            <div class="splash-title" style="font-size: 2.5rem;">STUDIO</div>
-            <p class="splash-text">
-                "Banyak orang sibuk mencari hiburan,<br>namun sedikit yang menemukan makna."
-            </p>
-            <button class="btn-enter" onclick="openGate()">MASUKI DUNIA BARU</button>
+            <div class="splash-title" style="font-size: 2rem;">STUDIO</div>
+            <p class="splash-text">"Masuklah ke dimensi baru."</p>
+            <button class="btn-enter" onclick="enterSite()">MASUK</button>
         </div>
     </div>
 
-    <!-- HEADER -->
+    <!-- MAIN CONTENT -->
     <header>
         <div class="hero-text">
             <h1>KAKA<br>STUDIO</h1>
@@ -345,131 +232,84 @@
     </header>
 
     <div class="content">
-
-        <!-- QUOTE UTAMA -->
-        <section class="quote-box">
-            <div class="quote-big">
-                "Hidup ini cuma sekali. Jangan cuma jadi penonton, jadilah pemain utama di hidupmu sendiri."
-            </div>
-            <p class="quote-small">
-                Tempat di mana setiap detik berharga untuk dirayakan.
+        <!-- QUOTE -->
+        <section style="margin-bottom: 40px; border-bottom: 1px solid #222; padding-bottom: 30px;">
+            <h2 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 1.2rem;">Filosofi</h2>
+            <p style="color: #ccc; font-style: italic; margin-top: 10px; line-height: 1.6;">
+                "Jangan hanya menjadi penonton dalam hidupmu sendiri. Jadilah sutradara yang mengambil alih kendali."
             </p>
         </section>
 
         <!-- LAYANAN -->
-        <div class="section-title">Layanan Jiwa</div>
+        <div class="section-title">Layanan Kami</div>
         <div class="service-grid">
-            
-            <div class="service-card">
-                <span class="service-icon">🎹</span>
-                <span class="service-name">Rental Musik</span>
-                <span class="service-desc">Melodi adalah bahasa yang bisa dimengerti tanpa kata.</span>
-            </div>
-
-            <div class="service-card">
-                <span class="service-icon">🎮</span>
-                <span class="service-name">Rental Game Ps/Warnet</span>
-                <span class="service-desc">Hiburan terbaik adalah ketika kamu bisa melupakan masalah sejenak.</span>
-            </div>
-
-            <div class="service-card">
-                <span class="service-icon">🎓</span>
-                <span class="service-name">Kursus Musik Dll</span>
-                <span class="service-desc">Bakat itu potensi, tapi latihan adalah harga matang yang harus dibayar.</span>
-            </div>
-
-            <div class="service-card">
-                <span class="service-icon">🎙️</span>
-                <span class="service-name">Rekaman&Buat Lagu Sendiri</span>
-                <span class="service-desc">Suara yang tak terekam, seolah tak pernah terjadi. Abadikan sekarang.</span>
-            </div>
-
-            <div class="service-card">
-                <span class="service-icon">🎬</span>
-                <span class="service-name">Video Clip Medsos</span>
-                <span class="service-desc">Dunia perlu melihat apa yang kamu lihat. Tunjukkan karyamu.</span>
-            </div>
-
-            <div class="service-card">
-                <span class="service-icon">🎤</span>
-                <span class="service-name">Room Karaoke Live</span>
-                <span class="service-desc">Kadang kita butuh teriakan, bukan kata-kata, untuk meluapkan isi hati.</span>
-            </div>
-
-            <div class="service-card">
-                <span class="service-icon">☕</span>
-                <span class="service-name">Cafe & Bar</span>
-                <span class="service-desc">Tempat di mana secangkir kopi bisa menjadi obat bagi penat.</span>
-            </div>
-
-            <div class="service-card">
-                <span class="service-icon">📽️</span>
-                <span class="service-name">Mini Bioskop</span>
-                <span class="service-desc">Nikmati cerita orang lain untuk mendapatkan perspektif hidup baru.</span>
-            </div>
-
-            <div class="service-card">
-                <span class="service-icon">🎭</span>
-                <span class="service-name">Acara Music</span>
-                <span class="service-desc">Momen bahagia hanya terjadi sekali, tapi kenangannya bisa selamanya.</span>
-            </div>
-
-            <div class="service-card">
-                <span class="service-icon">👥</span>
-                <span class="service-name">Ruang Komunitas</span>
-                <span class="service-desc">Berkumpul bukan sekadar bertemu, tapi menyatukan hati dan pikiran.</span>
-            </div>
-
+            <div class="service-card"><span class="service-icon">🎹</span><span class="service-name">Rental Musik</span><span class="service-desc">Alat musik lengkap.</span></div>
+            <div class="service-card"><span class="service-icon">🎮</span><span class="service-name">Game & Warnet</span><span class="service-desc">PS5 & PC High End.</span></div>
+            <div class="service-card"><span class="service-icon">🎙️</span><span class="service-name">Rekaman</span><span class="service-desc">Studio profesional.</span></div>
+            <div class="service-card"><span class="service-icon">🎓</span><span class="service-name">Kursus</span><span class="service-desc">Belajar musik & editing.</span></div>
+            <div class="service-card"><span class="service-icon">🎤</span><span class="service-name">Karaoke</span><span class="service-desc">Room privat nyaman.</span></div>
+            <div class="service-card"><span class="service-icon">☕</span><span class="service-name">Cafe</span><span class="service-desc">Kopi & makanan ringan.</span></div>
+            <div class="service-card"><span class="service-icon">🎬</span><span class="service-name">Video Clip</span><span class="service-desc">Produksi konten medsos.</span></div>
+            <div class="service-card"><span class="service-icon">📽️</span><span class="service-name">Mini Bioskop</span><span class="service-desc">Nonton film eksklusif.</span></div>
         </div>
 
         <!-- GALLERY -->
-        <section>
-            <div class="section-title">Galeri Kaka</div>
-            <div class="gallery-grid">
-                <img src="foto2.jpg" alt="Galeri 1">
-                <img src="foto3.jpg" alt="Galeri 2">
-                <img src="foto4.jpg" alt="Galeri 3">
-                <img src="foto1.jpg" alt="Galeri 4">
-            </div>
-        </section>
+        <div class="section-title">Galeri</div>
+        <div class="gallery-grid">
+            <!-- GANTI src DENGAN FILE FOTO ANDA (foto1.jpg, dll) -->
+            <img src="https://picsum.photos/seed/g1/300/300" alt="Galeri">
+            <img src="https://picsum.photos/seed/g2/300/300" alt="Galeri">
+            <img src="https://picsum.photos/seed/g3/300/300" alt="Galeri">
+            <img src="https://picsum.photos/seed/g4/300/300" alt="Galeri">
+        </div>
 
         <!-- VIDEO -->
-        <section>
-            <div class="section-title">Catatan Waktu</div>
-            <div class="video-box">
-                <video controls playsinline muted>
-                    <source src="video1.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="video-box">
-                <video controls playsinline muted>
-                    <source src="video2.mp4" type="video/mp4">
-                </video>
-            </div>
-        </section>
+        <div class="section-title">Dokumentasi</div>
+        <div class="video-box">
+            <video controls playsinline>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Browser Anda tidak support video.
+            </video>
+        </div>
 
-        <!-- CTA -->
-        <section class="cta-section">
-            <p class="cta-text">
-                Jangan biarkan <strong>ide-mu</strong> tertidur dalam keheningan.<br>
-                Wujudkan sekarang.
-            </p>
-            <a href="https://wa.me/6289655606009" class="btn-wa" target="_blank">HUBUNGI KAKA</a>
-        </section>
-
+        <!-- FOOTER CTA -->
+        <div class="cta-section">
+            <p style="color:#888; margin-bottom: 15px;">Siap mewujudkan ide Anda?</p>
+            <a href="https://wa.me/6289655606009" class="btn-wa" target="_blank">HUBUNGI KAMI</a>
+            <p style="font-size: 0.7rem; color: #444; margin-top: 30px;">&copy; 2023 Kaka Studio</p>
+        </div>
     </div>
 
     <script>
-        function openGate() {
-            // Mainkan musik
-            var audio = document.getElementById("Kaka Studio3.MP3");
-            audio.volume = 0.6;
-            audio.play();
-
-            // Hilangkan splash screen
+        function enterSite() {
             var splash = document.getElementById("splash-screen");
+            var audio = document.getElementById("bgMusic");
+
+            // 1. Atur volume musik (0.5 = 50%)
+            audio.volume = 0.5;
+
+            // 2. Coba putar musik.
+            // Jika browser memblokir atau file error, JANGAN STOP proses masuk website.
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Musik jalan -> Bagus.
+                    console.log("Music playing");
+                })
+                .catch(error => {
+                    // Musik gagal -> Tetap lanjut, biarkan saja error di console.
+                    console.log("Autoplay dicegah browser atau file error, tapi website tetap dibuka.");
+                });
+            }
+
+            // 3. Langsung buka splash screen (Tidak menunggu musik)
             splash.style.opacity = '0';
-            splash.style.visibility = 'hidden';
+            
+            // Setelah 1 detik (animasi selesai), hilangkan elemen splash dari layar
+            setTimeout(function(){
+                splash.style.display = 'none';
+            }, 1000);
         }
     </script>
 </body>
