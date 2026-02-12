@@ -126,7 +126,8 @@
         header {
             position: relative;
             height: 450px;
-            background-image: url('https://picsum.photos/seed/foto1/600/800');
+            /* GAMBAR DIUBAH JADI LOGO KAKA */
+            background-image: url('logo kaka1.jpeg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -324,9 +325,9 @@
 </head>
 <body>
 
-    <!-- AUDIO -->
+    <!-- AUDIO (FILE KAKA STUDIO3.MP3) -->
     <audio id="bgMusic" loop>
-        <source src="Kaka Studio3.MP3" type="audio/mpeg">
+        <source src="Kaka Studio3.mp3" type="audio/mpeg">
     </audio>
 
     <!-- SPLASH SCREEN -->
@@ -342,7 +343,7 @@
         </div>
     </div>
 
-    <!-- HEADER -->
+    <!-- HEADER (LOGO KAKA1.JPEG) -->
     <header>
         <div class="hero-text">
             <h1>KAKA<br>STUDIO</h1>
@@ -483,8 +484,10 @@
             var audio = document.getElementById("bgMusic");
             var splash = document.getElementById("splash-screen");
 
-            audio.volume = 0.6;
+            // Set volume supaya keras jelas
+            audio.volume = 0.8;
             
+            // Coba mainkan musik
             var playPromise = audio.play();
 
             if (playPromise !== undefined) {
@@ -492,7 +495,8 @@
                     console.log("Music playing");
                 })
                 .catch(error => {
-                    console.log("Audio error ignored:", error);
+                    console.log("Audio error (File mungkin tidak ditemukan atau salah nama):", error);
+                    // Jika error musik, website tetap lanjut buka
                 });
             }
 
