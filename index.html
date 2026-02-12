@@ -125,35 +125,37 @@
         /* ========== HEADER ========== */
         header {
             position: relative;
-            height: 450px;
-            /* GAMBAR DIUBAH JADI LOGO KAKA */
-            background-image: url('logo kaka1.jpeg');
-            background-size: cover;
-            background-position: center;
+            height: auto; /* Tinggi menyesuaikan konten (logo + teks) */
+            min-height: 450px; /* Minimum tinggi biar proporsional */
+            background-color: #000; /* Background hitam polos */
             display: flex;
+            flex-direction: column; /* Susun vertikal: Logo di atas, Teks di bawah */
             align-items: center;
-            justify-content: center;
-            box-shadow: inset 0 0 100px #000;
+            justify-content: flex-start; /* Mulai dari atas */
+            padding-top: 20px;
+            box-shadow: inset 0 0 50px #000;
         }
 
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7), #000000);
+        /* Style untuk Logo Full Width */
+        .logo-img {
+            width: 100%; /* Lebar Full */
+            max-width: 480px; /* Supaya tidak melebar berlebih di layar besar */
+            height: auto;
+            display: block;
+            object-fit: contain; /* Gambar terlihat utuh tanpa gepeng */
+            margin-bottom: 20px; /* Jarak antara logo dan teks */
+            padding: 0 10px; /* Sedikit margin samping biar nempel pinggir pas */
         }
 
         .hero-text {
             position: relative;
             z-index: 2;
+            margin-bottom: 40px;
         }
 
         .hero-text h1 {
             font-family: 'Cinzel Decorative', cursive;
-            font-size: 3.5rem;
+            font-size: 3rem; /* Ukuran font disesuaikan agar muat */
             line-height: 1;
             color: transparent;
             -webkit-text-stroke: 1px var(--gold);
@@ -337,17 +339,21 @@
             <div class="splash-title">KAKA</div>
             <div class="splash-title" style="font-size: 2.5rem;">STUDIO</div>
             <p class="splash-text">
-                "Banyak orang sibuk mencari hiburan,<br>namun sedikit yang menemukan makna."
+                Banyak Orang Sibuk Mencari Hiburan,<br>Namun Sedikit Yang Menemukan Makna
             </p>
-            <button class="btn-enter" onclick="openGate()">MASUKI DUNIA BARU</button>
+            <button class="btn-enter" onclick="openGate()">MASUKLAH UNTUK DUNIA BARU</button>
         </div>
     </div>
 
-    <!-- HEADER (LOGO KAKA1.JPEG) -->
+    <!-- HEADER -->
     <header>
+        <!-- LOGO KAKA (LEBAR FULL) -->
+        <img src="logo kaka1.jpeg" alt="Logo Kaka Studio" class="logo-img">
+        
+        <!-- TEKS DIBAWAH LOGO -->
         <div class="hero-text">
             <h1>KAKA<br>STUDIO</h1>
-            <div class="sub">Multimedia Entertainment</div>
+            <div class="sub">Multimedia-Entertainment</div>
         </div>
     </header>
 
@@ -356,10 +362,10 @@
         <!-- QUOTE UTAMA -->
         <section class="quote-box">
             <div class="quote-big">
-                "Hidup ini cuma sekali. Jangan cuma jadi penonton, jadilah pemain utama di hidupmu sendiri."
+                Hidup ini cuma sekali. Jangan jadi penonton, jadilah pemain utama di hidupmu sendiri
             </div>
             <p class="quote-small">
-                Tempat di mana setiap detik berharga untuk dirayakan.
+                setiap Detik Berharga Untuk Dirayakan.
             </p>
         </section>
 
@@ -368,61 +374,61 @@
         <div class="service-grid">
             
             <div class="service-card">
-                <span class="service-icon">🎹</span>
+                <span class="service-icon">??</span>
                 <span class="service-name">Rental Musik</span>
                 <span class="service-desc">Melodi adalah bahasa yang bisa dimengerti tanpa kata.</span>
             </div>
 
             <div class="service-card">
-                <span class="service-icon">🎮</span>
+                <span class="service-icon">??</span>
                 <span class="service-name">Rental Game Ps/Warnet</span>
                 <span class="service-desc">Hiburan terbaik adalah ketika kamu bisa melupakan masalah sejenak.</span>
             </div>
 
             <div class="service-card">
-                <span class="service-icon">🎓</span>
+                <span class="service-icon">??</span>
                 <span class="service-name">Kursus Musik Dll</span>
                 <span class="service-desc">Bakat itu potensi, tapi latihan adalah harga mati yang harus dibayar.</span>
             </div>
 
             <div class="service-card">
-                <span class="service-icon">🎙️</span>
+                <span class="service-icon">???</span>
                 <span class="service-name">Rekaman&Buat Lagu Sendiri</span>
                 <span class="service-desc">Suara yang tak terekam, seolah tak pernah terjadi. Abadikan sekarang.</span>
             </div>
 
             <div class="service-card">
-                <span class="service-icon">🎬</span>
+                <span class="service-icon">??</span>
                 <span class="service-name">Video Clip Medsos</span>
                 <span class="service-desc">Dunia perlu melihat apa yang kamu lihat. Tunjukkan karyamu.</span>
             </div>
 
             <div class="service-card">
-                <span class="service-icon">🎤</span>
+                <span class="service-icon">??</span>
                 <span class="service-name">Room Karaoke Live</span>
                 <span class="service-desc">Kadang kita butuh teriakan, bukan kata-kata, untuk meluapkan isi hati.</span>
             </div>
 
             <div class="service-card">
-                <span class="service-icon">☕</span>
+                <span class="service-icon">?</span>
                 <span class="service-name">Cafe & Bar</span>
                 <span class="service-desc">Tempat di mana secangkir kopi bisa menjadi obat bagi penat.</span>
             </div>
 
             <div class="service-card">
-                <span class="service-icon">📽️</span>
+                <span class="service-icon">???</span>
                 <span class="service-name">Mini Bioskop</span>
                 <span class="service-desc">Nikmati cerita orang lain untuk mendapatkan perspektif hidup baru.</span>
             </div>
 
             <div class="service-card">
-                <span class="service-icon">🎭</span>
+                <span class="service-icon">??</span>
                 <span class="service-name">Acara Music</span>
                 <span class="service-desc">Momen bahagia hanya terjadi sekali, tapi kenangannya bisa selamanya.</span>
             </div>
 
             <div class="service-card">
-                <span class="service-icon">👥</span>
+                <span class="service-icon">??</span>
                 <span class="service-name">Ruang Komunitas</span>
                 <span class="service-desc">Berkumpul bukan sekadar bertemu, tapi menyatukan hati dan pikiran.</span>
             </div>
