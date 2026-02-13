@@ -52,29 +52,6 @@
 
         audio { display: none; }
 
-        .music-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid var(--neon-cyan);
-            color: var(--neon-cyan);
-            padding: 12px 20px;
-            font-size: 14px;
-            cursor: pointer;
-            z-index: 999;
-            box-shadow: 0 0 15px var(--neon-cyan);
-            transition: all 0.3s;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .music-toggle:hover {
-            background: var(--neon-cyan);
-            color: #000;
-        }
-
         /* SPLASH SCREEN */
         #splash-screen {
             position: fixed;
@@ -398,9 +375,6 @@
         <source src="Kaka Studio3.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- TOMBOL MUSIK -->
-    <button class="music-toggle" onclick="toggleMusic()">🎵 MUSIC</button>
-
     <!-- SPLASH SCREEN -->
     <div id="splash-screen">
         <div class="splash-glitch">KAKA</div>
@@ -494,7 +468,7 @@
 
         <!-- VIDEO -->
         <section>
-            <div class="section-title">Catatan Kaka</div>
+            <div class="section-title"></div>
             
             <div class="video-box">
                 <iframe src="https://www.youtube.com/embed/DBa7whDxWyM?autoplay=1&mute=1&loop=1&playlist=DBa7whDxWyM" title="Kaka Studio Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -532,7 +506,6 @@
     <script>
         var isPlaying = false;
         var audio = document.getElementById("bgMusic");
-        var musicBtn = document.querySelector(".music-toggle");
 
         function openGate() {
             var splash = document.getElementById("splash-screen");
@@ -546,17 +519,9 @@
         function toggleMusic() {
             if (isPlaying) {
                 audio.pause();
-                musicBtn.innerHTML = "🔇 MUSIC"; 
-                musicBtn.style.borderColor = "#555";
-                musicBtn.style.color = "#555";
-                musicBtn.style.boxShadow = "none";
                 isPlaying = false;
             } else {
                 audio.play().then(function() {
-                    musicBtn.innerHTML = "🎵 MUSIC";
-                    musicBtn.style.borderColor = "var(--neon-cyan)";
-                    musicBtn.style.color = "var(--neon-cyan)";
-                    musicBtn.style.boxShadow = "0 0 15px var(--neon-cyan)";
                     isPlaying = true;
                 }).catch(function(error) {
                     console.log("Autoplay blocked:", error);
