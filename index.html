@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>KAKA STUDIO</title>
     
-    <!-- FONT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --gold: #D4AF37;
-            --bg-black: #000000;
-            --text-white: #F5F5F5;
+            --neon-cyan: #00f3ff;
+            --neon-pink: #bc13fe;
+            --bg-dark: #050505;
+            --text-light: #e0e0e0;
         }
 
         * {
@@ -24,19 +24,58 @@
         }
 
         body {
-            font-family: 'Raleway', sans-serif;
-            background-color: var(--bg-black);
-            color: var(--text-white);
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             text-align: center;
             overflow-x: hidden;
             width: 100%;
             max-width: 480px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(transparent 0%, rgba(0, 243, 255, 0.03) 2%, transparent 3%),
+                linear-gradient(90deg, transparent 0%, rgba(0, 243, 255, 0.03) 2%, transparent 3%);
+            background-size: 30px 30px;
+            z-index: -1;
+            pointer-events: none;
         }
 
         audio { display: none; }
 
-        /* ========== SPLASH SCREEN ========== */
+        .music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 12px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 0 15px var(--neon-cyan);
+            transition: all 0.3s;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .music-toggle:hover {
+            background: var(--neon-cyan);
+            color: #000;
+        }
+
+        /* SPLASH SCREEN */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -49,163 +88,125 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 1.5s ease, visibility 1.5s ease;
+            transition: opacity 1s ease, visibility 1s ease;
         }
 
-        .hypno-ring {
-            width: 250px;
-            height: 250px;
-            border: 2px solid rgba(212, 175, 55, 0.2);
-            border-radius: 50%;
-            position: absolute;
-            animation: spin 10s linear infinite;
-        }
-        
-        .hypno-ring::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            border-top-color: transparent;
-            border-bottom-color: transparent;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .splash-content {
-            z-index: 10;
-            padding: 20px;
-            animation: fadeInUp 1.5s ease;
-        }
-
-        .splash-title {
-            font-family: 'Cinzel Decorative', cursive;
+        .splash-glitch {
+            font-family: 'Orbitron', sans-serif;
             font-size: 3.5rem;
-            color: var(--gold);
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            margin-bottom: 20px;
-            animation: breathe 4s ease-in-out infinite;
+            font-weight: 900;
+            color: #fff;
+            position: relative;
+            text-shadow: 0 0 10px var(--neon-cyan);
+            margin-bottom: 10px;
+            animation: flicker 3s infinite;
+        }
+
+        .splash-sub {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-pink);
+            letter-spacing: 5px;
+            font-size: 1rem;
+            margin-bottom: 50px;
+            text-shadow: 0 0 8px var(--neon-pink);
         }
 
         .splash-text {
             font-size: 1rem;
-            color: #888;
-            margin-bottom: 50px;
+            color: #666;
+            margin-bottom: 20px;
+            padding: 0 20px;
             font-style: italic;
-            letter-spacing: 1px;
-            line-height: 1.6;
         }
 
         .btn-enter {
             background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 18px 50px;
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 15px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.4s ease;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
+            transition: 0.5s;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
         }
 
         .btn-enter:hover {
-            background: var(--gold);
+            background: var(--neon-cyan);
             color: #000;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 40px var(--neon-cyan);
         }
 
-        /* ========== HEADER ========== */
+        /* HEADER */
         header {
-            position: relative;
-            height: auto; /* Tinggi menyesuaikan konten (logo + teks) */
-            min-height: 450px; /* Minimum tinggi biar proporsional */
-            background-color: #000; /* Background hitam polos */
-            display: flex;
-            flex-direction: column; /* Susun vertikal: Logo di atas, Teks di bawah */
-            align-items: center;
-            justify-content: flex-start; /* Mulai dari atas */
-            padding-top: 20px;
-            box-shadow: inset 0 0 50px #000;
+            padding-top: 40px;
+            background: linear-gradient(to bottom, #0a0a0a, #000);
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
         }
 
-        /* Style untuk Logo Full Width */
         .logo-img {
-            width: 100%; /* Lebar Full */
-            max-width: 480px; /* Supaya tidak melebar berlebih di layar besar */
+            width: 200px;
             height: auto;
-            display: block;
-            object-fit: contain; /* Gambar terlihat utuh tanpa gepeng */
-            margin-bottom: 20px; /* Jarak antara logo dan teks */
-            padding: 0 10px; /* Sedikit margin samping biar nempel pinggir pas */
-        }
-
-        .hero-text {
-            position: relative;
-            z-index: 2;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.3));
         }
 
         .hero-text h1 {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: 3rem; /* Ukuran font disesuaikan agar muat */
-            line-height: 1;
-            color: transparent;
-            -webkit-text-stroke: 1px var(--gold);
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-            margin-bottom: 15px;
-            animation: breathe 5s ease-in-out infinite;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+            margin-bottom: 10px;
         }
 
         .hero-text .sub {
-            font-size: 0.8rem;
-            letter-spacing: 6px;
-            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-pink);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-shadow: 0 0 5px var(--neon-pink);
             text-transform: uppercase;
-            opacity: 0.8;
         }
 
-        /* ========== KONTEN UTAMA ========== */
+        /* CONTENT */
         .content {
-            padding: 50px 20px;
-            background: #000;
+            padding: 40px 20px;
         }
 
         .section-title {
-            font-family: 'Cinzel Decorative', cursive;
-            color: var(--gold);
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-cyan);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--neon-pink);
+            display: inline-block;
+            padding-bottom: 5px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
         }
 
-        /* QUOTE SECTION */
+        /* QUOTE */
         .quote-box {
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            background: rgba(0, 243, 255, 0.05);
+            border-left: 4px solid var(--neon-pink);
             padding: 20px;
-            border-left: 1px solid #333;
-            border-right: 1px solid #333;
+            border-radius: 0 10px 10px 0;
         }
 
         .quote-big {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: 1.6rem;
-            line-height: 1.4;
+            font-size: 1.3rem;
+            font-weight: 600;
             color: #fff;
-            margin-bottom: 15px;
+            line-height: 1.5;
         }
 
         .quote-small {
-            font-size: 0.9rem;
-            color: #666;
-            font-style: italic;
+            color: #888;
+            margin-top: 10px;
         }
 
         /* LAYANAN GRID */
@@ -213,71 +214,102 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid #1a1a1a;
-            padding: 25px 10px;
-            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #222;
+            padding: 15px 10px;
+            transition: 0.4s;
             position: relative;
-        }
-
-        .service-card:hover {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.05);
-            transform: translateY(-5px);
+            overflow: hidden;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .service-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--neon-cyan);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover {
+            border-color: var(--neon-cyan);
+            background: rgba(0, 243, 255, 0.05);
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
         }
 
         .service-card:hover::before {
-            opacity: 1;
+            transform: scaleX(1);
         }
 
-        .service-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
-        .service-name { font-size: 0.9rem; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: block; }
-        .service-desc { font-size: 0.7rem; color: #555; line-height: 1.4; font-style: italic; }
+        .service-icon { 
+            font-size: 2.5rem; 
+            margin-bottom: 10px; 
+            display: block; 
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+        
+        .service-name { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 0.9rem; 
+            color: #fff; 
+            margin-bottom: 5px; 
+            text-transform: uppercase;
+        }
+        
+        .service-desc { 
+            font-size: 0.75rem; 
+            color: #aaa;
+            display: block;
+            line-height: 1.2;
+        }
 
         /* GALLERY */
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5px;
-            margin-bottom: 60px;
-        }
-        .gallery-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            filter: grayscale(80%) contrast(120%);
-            transition: filter 0.4s;
-        }
-        .gallery-grid img:hover {
-            filter: grayscale(0%) contrast(100%);
+            margin-bottom: 50px;
         }
 
-        /* VIDEO (RESPONSIVE) */
+        .gallery-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border: 1px solid #222;
+            transition: 0.4s;
+        }
+
+        .gallery-grid img:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.4);
+            transform: scale(1.02);
+        }
+
+        /* VIDEO */
         .video-box {
             margin-bottom: 20px;
             border: 1px solid #222;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            background: #000;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
         }
 
-        iframe {
+        .video-box iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -285,108 +317,171 @@
             height: 100%;
         }
 
+        /* JAM BUKA */
+        .hours-box {
+            margin-top: 30px;
+            background: rgba(188, 19, 254, 0.05);
+            border: 1px solid rgba(188, 19, 254, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .hours-title {
+            color: var(--neon-pink);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .hours-time {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* LOKASI */
+        .location-section {
+            margin-top: 40px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #222;
+            margin-top: 15px;
+            filter: grayscale(100%) invert(90%) contrast(90%);
+        }
+
         /* CTA */
         .cta-section {
-            padding: 60px 20px;
-            background: radial-gradient(circle at center, #1a1a1a, #000);
+            padding: 50px 20px;
+            background: linear-gradient(to top, #0a0a0a, #000);
         }
-        .cta-text { font-size: 1rem; color: #ccc; margin-bottom: 30px; line-height: 1.6; }
+
+        .cta-text { 
+            font-size: 1rem; 
+            color: #ccc; 
+            margin-bottom: 25px; 
+            line-height: 1.6; 
+        }
         
         .btn-wa {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            padding: 18px 40px;
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
+            border: none;
+            color: #000;
+            padding: 15px 35px;
             font-weight: 700;
             text-decoration: none;
             display: inline-block;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.4s;
-            font-family: 'Cinzel Decorative', cursive;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+            transition: 0.3s;
         }
 
         .btn-wa:hover {
-            background: var(--gold);
-            color: #000;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--neon-pink);
         }
 
-        /* ANIMASI */
-        @keyframes breathe {
-            0%, 100% { opacity: 0.8; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.02); }
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.8; }
         }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- AUDIO (FILE KAKA STUDIO3.MP3) -->
+    <!-- AUDIO -->
     <audio id="bgMusic" loop>
         <source src="Kaka Studio3.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- TOMBOL MUSIK -->
+    <button class="music-toggle" onclick="toggleMusic()">🎵 MUSIC</button>
+
     <!-- SPLASH SCREEN -->
     <div id="splash-screen">
-        <div class="hypno-ring"></div>
-        <div class="splash-content">
-            <div class="splash-title">KAKA</div>
-            <div class="splash-title" style="font-size: 2.5rem;">STUDIO</div>
-            <p class="splash-text">
-                Banyak Orang Sibuk Mencari Hiburan,<br>Namun Sedikit Yang Menemukan Makna
-            </p>
-            <button class="btn-enter" onclick="openGate()">MASUKLAH UNTUK DUNIA BARU</button>
-        </div>
+        <div class="splash-glitch">KAKA</div>
+        <div class="splash-glitch" style="font-size: 2rem;">STUDIO</div>
+        <div class="splash-sub">Multimedia-Entertainment</div>
+        
+        <p class="splash-text">
+            Banyak Orang Sibuk Mencari Hiburan,<br>Namun Sedikit Yang Menemukan Makna
+        </p>
+        <button class="btn-enter" onclick="openGate()">OPEN Room</button>
     </div>
 
     <!-- HEADER -->
     <header>
-        <!-- LOGO KAKA (LEBAR FULL) -->
         <img src="logo kaka1.jpeg" alt="Logo Kaka Studio" class="logo-img">
-        
-        <!-- TEKS DIBAWAH LOGO -->
         <div class="hero-text">
-            <h1>KAKA<br>STUDIO</h1>
+            <h1>KAKA STUDIO</h1>
             <div class="sub">Multimedia-Entertainment</div>
         </div>
     </header>
 
     <div class="content">
 
-        <!-- QUOTE UTAMA -->
+        <!-- QUOTE -->
         <section class="quote-box">
             <div class="quote-big">
-                Hidup ini Hanya Sekali. Jangan Jadi Penonton, Jadilah Pemain Utama Di Hidupmu Sendiri
+                Hidup ini Hanya Sekali.<br>Jangan Jadi Penonton.
             </div>
             <p class="quote-small">
                 Setiap Detik Berharga Untuk Dirayakan.
             </p>
         </section>
 
-       <!-- LAYANAN -->
-        <div class="section-title">Layanan Kaka</div>
+        <!-- LAYANAN -->
+        <div class="section-title">Layanan</div>
         <div class="service-grid">
-            <div class="service-card"><span class="service-icon">🎹</span><span class="service-name">Rental Musik</span><span class="service-desc">Alat musik lengkap.</span></div>
-            <div class="service-card"><span class="service-icon">🎮</span><span class="service-name">Game & Warnet</span><span class="service-desc">PS5 & PC High End.</span></div>
-            <div class="service-card"><span class="service-icon">🎙️</span><span class="service-name">Rekaman</span><span class="service-desc">Studio profesional.</span></div>
-            <div class="service-card"><span class="service-icon">🎓</span><span class="service-name">Kursus</span><span class="service-desc">Belajar musik & editing.</span></div>
-            <div class="service-card"><span class="service-icon">🎤</span><span class="service-name">Karaoke</span><span class="service-desc">Room privat nyaman.</span></div>
-            <div class="service-card"><span class="service-icon">☕</span><span class="service-name">Cafe</span><span class="service-desc">Kopi & makanan ringan.</span></div>
-            <div class="service-card"><span class="service-icon">🎬</span><span class="service-name">Video Clip</span><span class="service-desc">Produksi konten medsos.</span></div>
-            <div class="service-card"><span class="service-icon">📽️</span><span class="service-name">Mini Bioskop</span><span class="service-desc">Nonton film eksklusif.</span></div>
-        </div>
-
+            <div class="service-card">
+                <span class="service-icon">🎹</span>
+                <span class="service-name">Rental Musik</span>
+                <span class="service-desc">Alat musik lengkap.</span>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎮</span>
+                <span class="service-name">Game Center</span>
+                <span class="service-desc">PS & PC High End.</span>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎙️</span>
+                <span class="service-name">Recording</span>
+                <span class="service-desc">Studio profesional.</span>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎓</span>
+                <span class="service-name">Course</span>
+                <span class="service-desc">Belajar musik.</span>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎤</span>
+                <span class="service-name">Karaoke</span>
+                <span class="service-desc">Room privat.</span>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">☕</span>
+                <span class="service-name">Cafe</span>
+                <span class="service-desc">Kopi & Snack.</span>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎬</span>
+                <span class="service-name">Video Clip</span>
+                <span class="service-desc">Content Creator.</span>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">📽️</span>
+                <span class="service-name">Mini Cinema</span>
+                <span class="service-desc">Film eksklusif.</span>
+            </div>
         </div>
 
         <!-- GALLERY -->
         <section>
-            <div class="section-title">Galeri Kaka</div>
+            <div class="section-title">Galeri</div>
             <div class="gallery-grid">
                 <img src="1.jpg" alt="Galeri 1">
                 <img src="2.jpg" alt="Galeri 2">
@@ -399,71 +494,78 @@
             </div>
         </section>
 
-        <!-- VIDEO (YOUTUBE AUTOPLAY MUTE) -->
+        <!-- VIDEO -->
         <section>
             <div class="section-title">Catatan Kaka</div>
             
-            <!-- KOTAK 1: Video DBa7whDxWyM -->
             <div class="video-box">
-                <iframe 
-                    src="https://www.youtube.com/embed/DBa7whDxWyM?autoplay=1&mute=1&controls=0&loop=1&playlist=DBa7whDxWyM" 
-                    title="Kaka Studio Video 1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/DBa7whDxWyM?autoplay=1&mute=1&loop=1&playlist=DBa7whDxWyM" title="Kaka Studio Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <!-- KOTAK 2: Video 6ZgJ5q980rw -->
             <div class="video-box">
-                <iframe 
-                    src="https://www.youtube.com/embed/6ZgJ5q980rw?autoplay=1&mute=1&controls=0&loop=1&playlist=6ZgJ5q980rw" 
-                    title="Kaka Studio Video 2" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/6ZgJ5q980rw?autoplay=1&mute=1&loop=1&playlist=6ZgJ5q980rw" title="Kaka Studio Video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
+            <!-- JAM BUKA -->
+            <div class="hours-box">
+                <div class="hours-title">JAM OPERASIONAL</div>
+                <div class="hours-time">10.00 - 24.00 </div>
+                <div style="font-size: 0.8rem; color: #aaa; margin-top: 5px;">Buka Setiap Hari</div>
+            </div>
+        </section>
+
+        <!-- LOKASI -->
+        
+                
+            </div>
+            <a href="https://maps.app.goo.gl/37nBg4eKkaqZDdGp9" target="_blank" style="display: inline-block; margin-top: 15px; color: var(--neon-cyan); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-decoration: none; border: 1px solid var(--neon-cyan); padding: 10px 25px;">BUKA MAPS</a>
         </section>
 
         <!-- CTA -->
         <section class="cta-section">
             <p class="cta-text">
-                Jangan Biarkan <strong>ide-mu</strong> Tertidur Dalam Keheningan.<br>
-                Wujudkan Sekarang.
+                Wujudkan Ide Kreativitasmu Sekarang.
             </p>
-            <a href="https://wa.me/6289655606009" class="btn-wa" target="_blank">HUBUNGI KAKA</a>
+            <a href="https://wa.me/6289655606009" class="btn-wa" target="_blank">HUBUNGI KAMI</a>
         </section>
 
     </div>
 
     <script>
+        var isPlaying = false;
+        var audio = document.getElementById("bgMusic");
+        var musicBtn = document.querySelector(".music-toggle");
+
         function openGate() {
-            var audio = document.getElementById("bgMusic");
             var splash = document.getElementById("splash-screen");
+            toggleMusic(); 
+            splash.style.opacity = '0';
+            setTimeout(function() {
+                splash.style.visibility = 'hidden';
+            }, 1000);
+        }
 
-            // Set volume supaya keras jelas
-            audio.volume = 0.8;
-            
-            // Coba mainkan musik
-            var playPromise = audio.play();
-
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    console.log("Music playing");
-                })
-                .catch(error => {
-                    console.log("Audio error (File mungkin tidak ditemukan atau salah nama):", error);
-                    // Jika error musik, website tetap lanjut buka
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                musicBtn.innerHTML = "🔇 MUSIC"; 
+                musicBtn.style.borderColor = "#555";
+                musicBtn.style.color = "#555";
+                musicBtn.style.boxShadow = "none";
+                isPlaying = false;
+            } else {
+                audio.play().then(function() {
+                    musicBtn.innerHTML = "🎵 MUSIC";
+                    musicBtn.style.borderColor = "var(--neon-cyan)";
+                    musicBtn.style.color = "var(--neon-cyan)";
+                    musicBtn.style.boxShadow = "0 0 15px var(--neon-cyan)";
+                    isPlaying = true;
+                }).catch(function(error) {
+                    console.log("Autoplay blocked:", error);
                 });
             }
-
-            splash.style.opacity = '0';
-            setTimeout(() => {
-                splash.style.visibility = 'hidden';
-            }, 1500);
         }
     </script>
+
 </body>
 </html>
