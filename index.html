@@ -286,13 +286,7 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
         }
 
-        .video-box iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+        /* NOTE: Style .video-box iframe tidak dihapus, tapi kita akan gunakan tag video yang di-styling inline agar pas di kotak */
 
         /* JAM BUKA */
         .hours-box {
@@ -388,7 +382,7 @@
     </div>
 
     <header>
-        <img src="logo kaka1.jpg" alt="Logo Kaka Studio" class="logo-img">
+        <img src="logo bru.png" alt="Logo Kaka Studio" class="logo-img">
         <div class="hero-text">
             <h1>KAKA STUDIO</h1>
             <div class="sub">Tempat Dimana Passion Menjadi Mahakarya</div>
@@ -471,11 +465,13 @@
             <div class="section-title"></div>
             
             <div class="video-box">
-                <iframe src="https://www.youtube.com/embed/DBa7whDxWyM?autoplay=1&mute=1&loop=1&playlist=DBa7whDxWyM" title="Kaka Studio Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- PERUBAHAN: Mengganti iframe dengan video untuk autoplay -->
+                <video src="Kaka studio.mp4" title="Kaka Studio Video 1" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"></video>
             </div>
 
             <div class="video-box">
-                <iframe src="https://www.youtube.com/embed/6ZgJ5q980rw?autoplay=1&mute=1&loop=1&playlist=6ZgJ5q980rw" title="Kaka Studio Video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- PERUBAHAN: Mengganti iframe dengan video untuk autoplay -->
+                <video src="SELAMT DATA KAKA.mp4" title="Kaka Studio Video 2" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"></video>
             </div>
 
             <!-- JAM BUKA -->
